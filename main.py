@@ -1,16 +1,19 @@
-
+from typing import Literal
 
 class Schedule:
     
     def __init__(self, shift: str):
         self.shift = shift
 
-
 class Member:
-    pass
+    def __init__(self, name: str):
+        self.discord_name = name
 
-class Characters:
-    pass
+class Character:
+    def __init__(self, ingame_name: str, role=Literal["DPS", "Healer", "Tank"]):
+        self.member = None
+        self.ingame_name = ingame_name
+        self.role = role
 
 class NormalParty:
     pass
