@@ -1,4 +1,4 @@
-from typing import Literal
+from typing import Literal, Optional
 
 class Schedule:
     
@@ -7,7 +7,7 @@ class Schedule:
 
 class Character:
     def __init__(self, ingame_name: str, role=Literal["DPS", "Healer", "Tank"]):
-        self.member = None
+        self.member: Optional["Member"] = None
         self.ingame_name = ingame_name
         self.role = role
         
@@ -16,6 +16,10 @@ class Member:
         self.characters = []
         self.discord_name = name
         self.schedule = schedule
+
+    def add_character(self, character: Character):
+        self.characters.append(character)
+        character.member = self
 
 class NormalParty:
     pass
